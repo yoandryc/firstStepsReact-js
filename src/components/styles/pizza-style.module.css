@@ -41,3 +41,7 @@
   filter: grayscale();
   opacity: 0.8;
 }
+.audioPlayer {
+  margin-top: 1.5rem;
+  width: 100%;
+}
