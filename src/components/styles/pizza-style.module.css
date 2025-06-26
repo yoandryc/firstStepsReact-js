@@ -41,7 +41,15 @@
   filter: grayscale();
   opacity: 0.8;
 }
-.audioPlayer {
-  margin-top: 1.5rem;
-  width: 100%;
+button{
+  border:none;
+  width: 130px;
+  border-radius: 5px;
+  text-align: center;
+  color: rgb(102, 74, 8);
+}
+button:hover{
+  background-color: rgb(182, 44, 44);
+  color: white;
+  cursor:pointer;
 }

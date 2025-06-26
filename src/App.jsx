@@ -1,19 +1,20 @@
 // este es un estilo global todo el proyecto
+//import Card from './components/Card'
+//import Pizza from './components/Pizza'
 import './App.css'
-import Header from './components/Header'
-import Card from './components/Card'
-import Pizza from './components/Pizza'
-import Menu from './components/Menu'
+import Home from './pages/Home'
+import Owner from './pages/Owner'
+import Navbar from './components/Navbar'
+import { Routes, Route } from 'react-router-dom'
 function App() {
   return (
-    <div className='container
-    '>
-    <Header/>
-    
-    {/* <Card img="/crab.png" /> */}
-    <Menu/>
-    </div>
-    
+    <>
+    <Navbar/>
+    <Routes>
+      <Route path="/"element={<Home />}/>
+      <Route path="/Owner" element={<Owner />}/>
+    </Routes>
+   </>   
   )
 }
 

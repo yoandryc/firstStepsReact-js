@@ -1,6 +1,7 @@
 import Pizza from "./Pizza";
-import {userState, useState}from "react";
+import { useState,useEffect } from "react";
 export default function Menu(){
+  // creando el estado para las pizzas
   const [pizzas, setPizzas] =  useState([
   {
     name: "Focaccia",
@@ -44,8 +45,18 @@ export default function Menu(){
     photoName: "pizzas/prosciutto.jpg",
     soldOut: false,
   },
-])
-  
+])//fin del estado
+
+//obteniendo datos del localStorage por si exiten, este hook es lanzando cuando se construye el componente
+useEffect(()=>{
+const data =localStorage.getItem("pizzas");
+if(data)setPizzas(JSON.parse(data));
+},[])
+//fijar los datos o actualizarlos
+useEffect(()=>localStorage.setItem("pizzas",JSON.stringify(pizzas)), [pizzas]);
+
+// funcion para borrar pizzas y actualizar el estado
+const deletePizza =(pizzaName) =>setPizzas(prev =>prev.filter((pizza)=> pizza.name !== pizzaName));  
 
   return(
     <main className="menu">
@@ -61,7 +72,8 @@ export default function Menu(){
         <ul className="pizzas">
           {pizzas.map((pizza)=> {
             return(
-              <Pizza pizzaObject={pizza} key={pizza.name}/>
+              <Pizza pizzaObject={pizza} key={pizza.name}
+              onDelete={deletePizza}/>
             )
           })}
         </ul>
